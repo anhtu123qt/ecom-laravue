@@ -35,7 +35,6 @@
     </div>
 </template>
 <script>
-import Button from '../../../vendor/laravel/breeze/stubs/inertia-vue/resources/js/Components/Button.vue';
 export default {
     data() {
         return {
@@ -43,7 +42,6 @@ export default {
         }
     },
     components: {
-        Button
      
     },
     methods:{

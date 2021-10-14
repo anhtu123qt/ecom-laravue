@@ -5,6 +5,8 @@ import Dashboard from "../components/Dashboard";
 import Shop from "../components/Shop";
 import Product from "../components/Product";
 import AddProduct from "../components/AddProduct";
+import Checkout from "../components/Checkout";
+import Order from "../components/Order"
 import store from '../store/index'
 
 Vue.use(VueRouter);
@@ -15,6 +17,7 @@ const routes = [
         name:'login',
         component:Login
     },
+    //admin
     {
         path:'/dashboard',
         name:'dashboard',
@@ -34,12 +37,7 @@ const routes = [
             next()
         }
     },
-    {
-        path:'/shop',
-        name:'shop',
-        component:Shop
-    },
-    {
+        {
         path:'/product',
         name:'product',
         component:Product
@@ -48,7 +46,23 @@ const routes = [
         path:'/product/add',
         name:'addProduct',
         component:AddProduct
-    }
+    },
+     {
+        path:'/order',
+        name:'order',
+        component:Order
+    },
+    // User
+    {
+        path:'/shop',
+        name:'shop',
+        component:Shop
+    },
+    {
+        path:'/checkout',
+        name:'checkout',
+        component:Checkout
+    },
 ]
 
 const router = new VueRouter({

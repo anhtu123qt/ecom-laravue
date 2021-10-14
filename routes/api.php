@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\ProductController;
 
 /*
@@ -26,4 +27,8 @@ Route::group(['prefix'=>'auth'],function (){
 });
 Route::group(['prefix' => 'admin'],function (){
     Route::apiResource('products',ProductController::class);
+    Route::get('order',[OrderController::class,'get_order']);
 });
+
+// user
+Route::post('purchase',[OrderController::class,'purchase']);
