@@ -3,20 +3,29 @@
   <a class="navbar-brand" href="#">TUPA</a>
   <div class="collapse navbar-collapse" >
     <ul class="navbar-nav">
-     <template v-if="authenticated">
-        <li class="nav-item">
+     <template v-if="authenticated && authenticated.user.role == 1">
+      <li class="nav-item">
         <router-link class="nav-link" :to="{name:'dashboard'}">Dashboard</router-link>
+      </li>
+       <li class="nav-item">
+        <router-link class="nav-link" :to="{name:'product'}">Product</router-link>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" >Order</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" @click="onLogOut">Sign Out</a>
       </li>
-     </template>
-     <template v-else>
-       <li class="nav-item">
-        <router-link class="nav-link" :to="{name:'login'}">Login</router-link>
+      <li class="nav-item ">
+        <a href="" class="nav-link">{{ authenticated.user.name }}</a>
       </li>
-      <li class="nav-item">
-        <a href="" class="nav-link">Register</a>
+     </template>
+     <template v-if="authenticated && authenticated.user.role == 0">
+       <li class="nav-item">
+        <a href="#" class="nav-link" @click="onLogOut">Sign Out</a>
+      </li>
+      <li class="nav-item ">
+        <a href="" class="nav-link">{{ authenticated.user.name }}</a>
       </li>
      </template>
       </ul>

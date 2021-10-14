@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Login from "../components/Login";
 import Dashboard from "../components/Dashboard";
 import Shop from "../components/Shop";
+import Product from "../components/Product";
+import AddProduct from "../components/AddProduct";
 import store from '../store/index'
 
 Vue.use(VueRouter);
@@ -37,6 +39,16 @@ const routes = [
         name:'shop',
         component:Shop
     },
+    {
+        path:'/product',
+        name:'product',
+        component:Product
+    },
+    {
+        path:'/product/add',
+        name:'addProduct',
+        component:AddProduct
+    }
 ]
 
 const router = new VueRouter({
