@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,7 @@ Route::group(['prefix'=>'auth'],function (){
     Route::post('login',[UserController::class,'login']);
     Route::get('me',[UserController::class,'me'])->middleware('auth:api');
     Route::get('logout',[UserController::class,'logout']);
+});
+Route::group(['prefix' => 'admin'],function (){
+    Route::apiResource('products',ProductController::class);
 });
