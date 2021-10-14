@@ -7,7 +7,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{product.name}}</h5>
                         <p class="card-text">{{product.price}}</p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                        <a href="#" class="btn btn-primary" @click.prevent="addToCart(product)">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -16,21 +16,24 @@
 </template>
 
 <script>
+import {mapActions,mapGetters} from "vuex"
 export default {
-    data() {
-        return {
-            products:{}
-        }
+    computed: {
+        ...mapGetters({
+            products:'cart/products',
+        })
     },
     methods: {
-         getProducts(){
-          axios.get('/admin/products').then((response) => {
-              this.products = response.data.data;
-          })
-      },
-    },
-    created () {
-        this.getProducts();
+        addToCart(product) {
+            this.$store.dispatch('cart/addToCart', {
+                product:product,
+                qty:1
+            })
+        }
+    },   
+    mounted () {
+        this.$store.dispatch('cart/getProducts')
     }
+   
 }
 </script>

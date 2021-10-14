@@ -11,7 +11,7 @@
         <router-link class="nav-link" :to="{name:'product'}">Product</router-link>
       </li>
        <li class="nav-item">
-        <a class="nav-link" >Order</a>
+        <router-link class="nav-link" :to="{name:'order'}" >Order</router-link>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" @click="onLogOut">Sign Out</a>
@@ -27,6 +27,9 @@
       <li class="nav-item ">
         <a href="" class="nav-link">{{ authenticated.user.name }}</a>
       </li>
+      <router-link class="cart" :to="{name:'checkout'}">
+        Cart( <span>{{cartCount}}</span> )
+      </router-link>
      </template>
       </ul>
   </div>
@@ -38,7 +41,8 @@ export default {
   computed: {
     ...mapGetters({
       authenticated:'auth/authenticated',
-      user:'auth/user'
+      user:'auth/user',
+      cartCount:'cart/cartCount'
     })
   },
   methods: {
@@ -55,3 +59,9 @@ export default {
   }
 }
 </script>
+<style>
+.cart {
+  margin-left: 983px;
+    margin-top: 7px;
+}
+</style>
